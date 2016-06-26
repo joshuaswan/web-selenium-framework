@@ -1,0 +1,36 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+apply plugin: 'application'
+
+
+repositories {
+    maven { url 'http://repo1.maven.org/maven2/' }
+    mavenCentral()
+}
+
+project.ext{
+    hibernateVersion = '5.0.1.Final'
+    seleniumVersion = '2.48.2'
+    configurationVersion = '1.10'
+    commonsNetVersion='3.4'
+    junitVersion = '4.11'
+}
+
+dependencies {
+    compile "org.hibernate:hibernate-entitymanager:$hibernateVersion"
+    compile "org.hibernate:hibernate-validator:$hibernateVersion"
+    compile "org.seleniumhq.selenium:selenium-java:$seleniumVersion"
+    compile "commons-configuration:commons-configuration:$configurationVersion"
+    compile "commons-net:commons-net:$commonsNetVersion"
+    testCompile "junit:junit:$junitVersion"
+}
+
+
+sourceSets {
+    main {
+        resources {
+            srcDirs += 'src/main/webapp'
+        }
+    }
+}
